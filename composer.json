@@ -1,0 +1,54 @@
+{
+    "name": "arielmejiadev/json-api-auth",
+    "description": "It adds authentication scaffold for api authentication by tokens for packages like Passport or Sanctum.",
+    "keywords": [
+        "arielmejiadev",
+        "json-api-auth"
+    ],
+    "homepage": "https://github.com/arielmejiadev/json-api-auth",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ariel Mejia Dev",
+            "email": "arielmejiadev@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0|^5.0|^6.0",
+        "phpunit/phpunit": "^8.0|^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ArielMejiaDev\\JsonApiAuth\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ArielMejiaDev\\JsonApiAuth\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ArielMejiaDev\\JsonApiAuth\\JsonApiAuthServiceProvider"
+            ],
+            "aliases": {
+                "JsonApiAuth": "ArielMejiaDev\\JsonApiAuth\\JsonApiAuthFacade"
+            }
+        }
+    }
+}
