@@ -4,16 +4,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Json Api Authentication Register Configuration
+    | Json Api Authentication Show Token After Registration
     |--------------------------------------------------------------------------
     |
     | This value is used to instruct the package if the user would be
-    | authenticated after a successful user registration to return
-    | to return the JWT token with the response.
+    | Authenticated after a successful user registration
+    | To return the JWT token with the response.
     |
     */
 
-    'authenticate_after_register' => false,
+    'show_token_after_register' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -32,5 +32,43 @@ return [
     'revoke_all_tokens' => false,
 
     'delete_all_tokens' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Json Api Forgot Password Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This value is used to instruct the package the url for the notification
+    | This would be a page of your frontend new password form.
+    | Its not related to any backend route take that in mind.
+    |
+    */
+
+    'new_password_form_url' => 'https://your-new-password-form-endpoint-in-your-frontend-app.any',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Json Api Authentication Token id Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This value is used to create tokens in Login and Register features
+    |
+    */
+
+    'token_id' => 'App',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Json Api Authentication Scopes
+    |--------------------------------------------------------------------------
+    |
+    | Passport & Sanctum use scopes to validate abilities,
+    | Optionally you can add scopes here, that would be added on Login and register
+    |
+    */
+
+    'scopes' => [
+
+    ],
 
 ];

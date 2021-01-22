@@ -36,6 +36,10 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests/JsonApiAuth'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/App/Http/Requests/JsonApiAuth', app_path('Http/Requests/JsonApiAuth'));
 
+        // Notifications...
+        (new Filesystem)->ensureDirectoryExists(app_path('Notifications/JsonApiAuth'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/App/Notifications/JsonApiAuth', app_path('Notifications/JsonApiAuth'));
+
         // Tests...
 //        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/tests/Feature', base_path('tests/Feature'));
 
