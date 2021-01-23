@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'new_password_form_url' => 'https://your-new-password-form-endpoint-in-your-frontend-app.any',
+    'new_password_form_frontend_endpoint_url' => 'https://your-new-password-form-endpoint-in-your-frontend-app.any',
 
     /*
     |--------------------------------------------------------------------------
@@ -70,5 +70,20 @@ return [
     'scopes' => [
 
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Json Api Authentication Frontend Endpoints Of Verify Email Feature
+    |--------------------------------------------------------------------------
+    |
+    | This values are used to redirect user when email verified validation pass
+    | First one is use to redirect users if email account its already verified
+    | Second is use to redirect users if email account its verified at that moment
+    |
+    */
+
+    'email_account_already_verified_frontend_endpoint_url' => 'https://your-frontend.com/already-verified',
+
+    'email_account_just_verified_frontend_endpoint_url' => 'https://your-frontend.com/verified',
 
 ];
