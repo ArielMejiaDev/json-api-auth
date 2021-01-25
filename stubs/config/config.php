@@ -1,6 +1,21 @@
 <?php
 
+use App\Actions\JsonApiAuth\AuthKit;
+
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Json Api Authentication Kit
+    |--------------------------------------------------------------------------
+    |
+    | This value is used to instruct the package what official package is used
+    | You can use passport or sanctum, if you leave it empty the default
+    | Starter kit would be passport.
+    |
+    */
+
+    'authentication_kit' => AuthKit::PASSPORT_AUTH_KIT,
 
     /*
     |--------------------------------------------------------------------------
@@ -13,7 +28,7 @@ return [
     |
     */
 
-    'show_token_after_register' => false,
+    'show_token_after_register' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -31,6 +46,8 @@ return [
 
     'revoke_all_tokens' => false,
 
+    'delete_current_token' => false,
+
     'delete_all_tokens' => true,
 
     /*
@@ -44,7 +61,7 @@ return [
     |
     */
 
-    'new_password_form_frontend_endpoint_url' => 'https://your-new-password-form-endpoint-in-your-frontend-app.any',
+    'new_password_form_frontend_endpoint_url' => 'https://your-frontend-app.any/new-password',
 
     /*
     |--------------------------------------------------------------------------

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\JsonApiAuth;
 
 use App\Http\Controllers\Controller;
-
 use App\Http\Controllers\JsonApiAuth\Traits\HasToShowApiTokens;
 use App\Http\Requests\JsonApiAuth\LoginRequest;
 use App\Models\User;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\JsonApiAuth;
 
+use App\Actions\JsonApiAuth\AuthKit;
 use App\Notifications\JsonApiAuth\VerifyEmailNotification;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -20,11 +21,11 @@ class EmailVerificationNotificationController extends Controller
      */
     public function __invoke(Request $request)
     {
-        if ($request->user('api')->hasVerifiedEmail()) {
+        if ($request->user(AuthKit::getGuard())->hasVerifiedEmail()) {
             return response(['message'=>'Already verified']);
         }
 
-        $request->user('api')->notify(new VerifyEmailNotification);
+        $request->user(AuthKit::getGuard())->notify(new VerifyEmailNotification);
 
         return response()->json([
             'message' => 'Email Sent',

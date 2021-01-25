@@ -4,7 +4,6 @@ namespace App\Http\Requests\JsonApiAuth;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\ValidationException;
 
 class PasswordResetLinkRequest extends FormRequest
 {
@@ -30,7 +29,7 @@ class PasswordResetLinkRequest extends FormRequest
         ];
     }
 
-    public function getEmail()
+    public function getUser()
     {
         $email = $this->get('email');
 
@@ -40,16 +39,6 @@ class PasswordResetLinkRequest extends FormRequest
             ], 404);
         }
 
-        return $email;
-    }
-
-    public function getNotificationEndpoint()
-    {
-        if(! $endpoint = config('json-api-auth.new_password_form_frontend_endpoint_url')) {
-            throw ValidationException::withMessages([
-                'message' => 'There is no domain set in config/json-api-auth.php as new_password_form_url, please add a frontend endpoint to send email with the link.'
-            ]);
-        }
-        return $endpoint;
+        return User::whereEmail($email)->first();
     }
 }

@@ -3,31 +3,36 @@
 namespace App\Http\Controllers\JsonApiAuth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\JsonApiAuth\Revokers\RevokerFactory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\User;
 
 class LogoutController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function __invoke(Request $request)
     {
-
-        $user = Auth::user();
-
-        $this->{$this->methodToApply()}($user);
+        (new RevokerFactory)->make()->{$this->applyRevokeStrategy()}();
 
         return Response([
             'message' => 'You are successfully logged out',
         ], 200);
     }
 
-    protected function methodToApply()
+    /**
+     * It guess what method is going to use on logout based on the package config file
+     * @return string
+     */
+    public function applyRevokeStrategy()
     {
         $methods = [
             'revoke_only_current_token',
             'revoke_all_tokens',
+            'delete_current_token',
             'delete_all_tokens',
         ];
 
@@ -37,27 +42,6 @@ class LogoutController extends Controller
             }
         }
 
-        return (string) Str::of($methods[2])->camel();
-    }
-
-    protected function revokeOnlyCurrentToken(User $user)
-    {
-        $user->token()->revoke();
-    }
-
-    protected function revokeAllTokens(User $user)
-    {
-        DB::table('oauth_access_tokens')
-            ->where('user_id', $user->id)
-            ->update([
-                'revoked' => true
-            ]);
-    }
-
-    protected function deleteAllTokens(User $user)
-    {
-        $user->tokens->each(function ($token, $key) {
-            $token->delete();
-        });
+        return (string) Str::of($methods[3])->camel();
     }
 }

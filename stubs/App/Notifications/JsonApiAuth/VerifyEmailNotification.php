@@ -17,12 +17,13 @@ class VerifyEmailNotification extends VerifyEmail
      */
     protected function verificationUrl($notifiable)
     {
-        if (static::$createUrlCallback) {
-            return call_user_func(static::$createUrlCallback, $notifiable);
-        }
+//        if (static::$createUrlCallback) {
+//            return call_user_func(static::$createUrlCallback, $notifiable);
+//        }
 
         return URL::temporarySignedRoute(
             'verification.verify.byApi',
+            // here you can customize the email verification link expiration time in minutes
             Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
             [
                 'id' => $notifiable->getKey(),

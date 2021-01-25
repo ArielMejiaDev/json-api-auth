@@ -22,7 +22,7 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            // added just to test on postman (See the method Docblock to get more info).
+            // if block added only to test on postman.
             if($request->wantsJson()) {
                 return response()->json([
                     'message' => 'Email is already verified',
@@ -35,7 +35,7 @@ class VerifyEmailController extends Controller
             event(new Verified($request->user()));
         }
 
-        // added just to test on postman (See the method Docblock to get more info).
+        // if block added just to test on postman.
         if($request->wantsJson()) {
             return response()->json([
                 'message' => 'Email verified',
