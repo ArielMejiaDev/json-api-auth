@@ -29,7 +29,7 @@ class LoginController extends Controller
         }
 
         return response()->json([
-            'message' => __('auth.failed'),
+            'message' => __('json-api-auth.failed'),
         ], 401);
 
     }

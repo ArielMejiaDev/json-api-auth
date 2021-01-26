@@ -25,7 +25,7 @@ class VerifyEmailController extends Controller
             // if block added only to test on postman.
             if($request->wantsJson()) {
                 return response()->json([
-                    'message' => 'Email is already verified',
+                    'message' => __('json-api-auth.email_already_verified'),
                 ], 200);
             }
             return redirect()->to(config('json-api-auth.email_account_already_verified_frontend_endpoint_url'));
@@ -38,7 +38,7 @@ class VerifyEmailController extends Controller
         // if block added just to test on postman.
         if($request->wantsJson()) {
             return response()->json([
-                'message' => 'Email verified',
+                'message' => __('json-api-auth.email_verified'),
             ], 200);
         }
         return redirect()->to(config('json-api-auth.email_account_just_verified_frontend_endpoint_url'));

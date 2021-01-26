@@ -19,12 +19,12 @@ class ConfirmablePasswordController
     {
         if (! Hash::check($request->get('password'), $request->user(AuthKit::getGuard())->password)) {
             throw ValidationException::withMessages([
-                'password' => __('auth.password'),
+                'password' => __('json-api-auth.password'),
             ]);
         }
 
         return response()->json([
-            'message' => 'password confirmed',
+            'message' => __('json-api-auth.password_confirmed'),
         ], 200);
     }
 }

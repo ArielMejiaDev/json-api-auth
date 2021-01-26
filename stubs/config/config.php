@@ -1,21 +1,6 @@
 <?php
 
-use App\Actions\JsonApiAuth\AuthKit;
-
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Json Api Authentication Kit
-    |--------------------------------------------------------------------------
-    |
-    | This value is used to instruct the package what official package is used
-    | You can use passport or sanctum, if you leave it empty the default
-    | Starter kit would be passport.
-    |
-    */
-
-    'authentication_kit' => AuthKit::PASSPORT_AUTH_KIT,
 
     /*
     |--------------------------------------------------------------------------

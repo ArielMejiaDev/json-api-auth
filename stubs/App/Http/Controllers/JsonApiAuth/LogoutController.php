@@ -19,7 +19,7 @@ class LogoutController extends Controller
         (new RevokerFactory)->make()->{$this->applyRevokeStrategy()}();
 
         return Response([
-            'message' => 'You are successfully logged out',
+            'message' => __('json-api-auth.logout'),
         ], 200);
     }
 

@@ -10,27 +10,28 @@ use App\Http\Controllers\JsonApiAuth\PasswordResetLinkController;
 use App\Http\Controllers\JsonApiAuth\RegisterController;
 use App\Http\Controllers\JsonApiAuth\VerifyEmailController;
 
-Route::post('/register', RegisterController::class)->name('register');
+Route::post('/register', RegisterController::class)->name('json-api-auth.register');
 
-Route::post('/login', LoginController::class)->name('login');
+Route::post('/login', LoginController::class)->name('json-api-auth.login');
 
 Route::get('/logout', LogoutController::class)
     ->middleware((AuthKit::getMiddleware()))
-    ->name('logout');
+    ->name('json-api-auth.logout');
 
 Route::post('/forgot-password', PasswordResetLinkController::class)
-    ->name('password.email');
+    ->name('json-api-auth.password.email');
 
 Route::post('/reset-password', NewPasswordController::class)
-    ->name('password.update');
+    ->name('json-api-auth.password.update');
 
 Route::post('/email/verification-notification', EmailVerificationNotificationController::class)
     ->middleware([(AuthKit::getMiddleware()), 'throttle:6,1'])
-    ->name('verification.send');
+    ->name('json-api-auth.verification.send');
 
 Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)
     ->middleware(['signed', 'throttle:6,1'])
-    ->name('verification.verify.byApi');
+    ->name('json-api-auth.verification.verify');
 
 Route::post('/confirm-password', ConfirmablePasswordController::class)
-    ->middleware((AuthKit::getMiddleware()));
+    ->middleware((AuthKit::getMiddleware()))
+    ->name('json-api-auth.password.confirm');

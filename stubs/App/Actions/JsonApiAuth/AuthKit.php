@@ -9,7 +9,7 @@ class AuthKit
 
     public static function getMiddleware()
     {
-        if(config('json-api-auth.authentication_kit') === self::SANCTUM_AUTH_KIT) {
+        if(static::isSanctum()) {
             return 'auth:sanctum';
         }
 
@@ -27,7 +27,8 @@ class AuthKit
 
     public static function isPassport()
     {
-        if(config('json-api-auth.authentication_kit') === self::PASSPORT_AUTH_KIT) {
+        $passportVendorName = 'Laravel\Passport\Passport';
+        if (class_exists($passportVendorName)) {
             return true;
         }
         return false;
@@ -35,7 +36,8 @@ class AuthKit
 
     public static function isSanctum()
     {
-        if(config('json-api-auth.authentication_kit') === self::SANCTUM_AUTH_KIT) {
+        $sanctumVendorName = 'Laravel\Sanctum\Sanctum';
+        if(class_exists($sanctumVendorName)) {
             return true;
         }
         return false;

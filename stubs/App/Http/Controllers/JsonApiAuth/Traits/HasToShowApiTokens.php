@@ -17,7 +17,7 @@ trait HasToShowApiTokens
     public function showCredentials($user, $code = 200, $showToken = true)
     {
         $response = [
-            'message' => 'success',
+            'message' => __('json-api-auth.success'),
             'user' => $user,
         ];
 
@@ -31,7 +31,7 @@ trait HasToShowApiTokens
     protected function createToken(User $user)
     {
         $token = $user->createToken(
-            config('json-api-auth.token_id'),
+            config('json-api-auth.token_id') ?? 'App',
             // Here you can customize the scopes for a new user
             config('json-api-auth.scopes')
         );

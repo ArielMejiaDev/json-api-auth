@@ -34,7 +34,7 @@ class PasswordResetLinkController extends Controller
             $user->notify(new ResetPasswordNotification($token));
 
             return response()->json([
-                'message' => 'check your email',
+                'message' => __('json-api-auth.check_your_email'),
             ]);
 
         } catch (\Exception $exception) {

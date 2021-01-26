@@ -22,13 +22,13 @@ class EmailVerificationNotificationController extends Controller
     public function __invoke(Request $request)
     {
         if ($request->user(AuthKit::getGuard())->hasVerifiedEmail()) {
-            return response(['message'=>'Already verified']);
+            return response(['message'=> __('json-api-auth.email_already_verified')]);
         }
 
         $request->user(AuthKit::getGuard())->notify(new VerifyEmailNotification);
 
         return response()->json([
-            'message' => 'Email Sent',
+            'message' => __('json-api-auth.email_sent'),
         ], 200);
     }
 

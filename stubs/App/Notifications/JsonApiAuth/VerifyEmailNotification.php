@@ -22,7 +22,7 @@ class VerifyEmailNotification extends VerifyEmail
 //        }
 
         return URL::temporarySignedRoute(
-            'verification.verify.byApi',
+            'json-api-auth.verification.verify',
             // here you can customize the email verification link expiration time in minutes
             Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
             [
