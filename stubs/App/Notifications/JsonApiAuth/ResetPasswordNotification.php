@@ -27,7 +27,7 @@ class ResetPasswordNotification extends ResetPassword
      */
     public function getNotificationEndpoint($notifiable)
     {
-        if(! $endpoint = config('json-api-auth.new_password_form_frontend_endpoint_url')) {
+        if(! $endpoint = config('json-api-auth.new_password_form_url')) {
             throw ValidationException::withMessages([
                 'message' => 'There is no domain set in config/json-api-auth.php as new_password_form_url, please add a frontend endpoint to send email with the link.'
             ]);

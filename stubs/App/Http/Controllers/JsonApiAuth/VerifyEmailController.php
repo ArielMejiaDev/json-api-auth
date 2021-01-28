@@ -28,7 +28,7 @@ class VerifyEmailController extends Controller
                     'message' => __('json-api-auth.email_already_verified'),
                 ], 200);
             }
-            return redirect()->to(config('json-api-auth.email_account_already_verified_frontend_endpoint_url'));
+            return redirect()->to(config('json-api-auth.email_account_was_already_verified_url'));
         }
 
         if ($request->user()->markEmailAsVerified()) {
@@ -41,6 +41,6 @@ class VerifyEmailController extends Controller
                 'message' => __('json-api-auth.email_verified'),
             ], 200);
         }
-        return redirect()->to(config('json-api-auth.email_account_just_verified_frontend_endpoint_url'));
+        return redirect()->to(config('json-api-auth.email_account_just_verified_url'));
     }
 }
