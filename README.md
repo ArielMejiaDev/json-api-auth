@@ -18,7 +18,7 @@ To learn all about it, head over to <a href="https://arielmejiadev.github.io/jso
 You can install the package via composer:
 
 ```bash
-composer require arielmejiadev/json-api-auth
+composer require arielmejiadev/json-api-auth --dev
 ```
 
 ## 📦 Usage
