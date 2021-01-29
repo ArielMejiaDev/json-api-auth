@@ -18,7 +18,7 @@ To learn all about it, head over to <a href="#" target="_blank"> the extensive d
 You can install the package via composer:
 
 ```bash
-composer require arielmejiadev/json-api-auth
+composer require arielmejiadev/json-api-auth --dev
 ```
 
 ## 📦 Usage
