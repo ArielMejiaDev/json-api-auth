@@ -58,7 +58,11 @@ class InstallCommand extends Command
         // Config...
         copy(__DIR__.'/../../stubs/config/config.php', base_path('config/json-api-auth.php'));
 
-        $this->info('Json Api Authentication scaffolding installed successfully.');
-        $this->comment('You can register a user in ' . config('app.url') . '/api/register');
+        $this->output->success('Json Api Authentication scaffolding installed successfully here the routes of the package:');
+
+        $this->call('route:list', [
+            '--name' => 'json-api-auth',
+            '--columns' => ['method', 'uri', 'name']
+        ]);
     }
 }
