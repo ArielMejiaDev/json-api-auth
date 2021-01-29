@@ -11,7 +11,7 @@ It adds all the scaffold to get register, login, logout, forgot password, passwo
 
 It plays well with both authentication official packages Laravel Passport or Sanctum.
 
-To learn all about it, head over to <a href="#" target="_blank"> the extensive documentation.</a>
+To learn all about it, head over to <a href="https://arielmejiadev.github.io/json-api-auth-docs/" target="_blank"> the extensive documentation.</a>
 
 ## 👨‍💻 Installation
 
