@@ -48,7 +48,7 @@ class InstallCommand extends Command
         (new Filesystem)->ensureDirectoryExists(resource_path('lang'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/resources/lang', resource_path('lang/en'));
 
-//         Tests...
+        // Tests...
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/tests/Feature', base_path('tests/Feature'));
 
         // Routes...
@@ -60,9 +60,60 @@ class InstallCommand extends Command
 
         $this->output->success('Json Api Authentication scaffolding installed successfully here the routes of the package:');
 
-        $this->call('route:list', [
-            '--name' => 'json-api-auth',
-            '--columns' => ['method', 'uri', 'name']
-        ]);
+        $this->createRoutesTable();
+    }
+
+
+    /**
+     * At command runtime the routes files are not available yet, so its necessary to build it manually
+     */
+    public function createRoutesTable()
+    {
+        $headers = ['Method', 'URI', 'Name'];
+
+        $routes = [
+            [
+                'method' => 'POST',
+                'uri' => 'api/confirm-password',
+                'name' => 'json-api-auth.password.confirm',
+            ],
+            [
+                'method' => 'POST',
+                'uri' => 'api/email/verification-notification',
+                'name' => 'json-api-auth.verification.send',
+            ],
+            [
+                'method' => 'POST',
+                'uri' => 'api/forgot-password',
+                'name' => 'json-api-auth.password.email',
+            ],
+            [
+                'method' => 'POST',
+                'uri' => 'api/login',
+                'name' => 'json-api-auth.login',
+            ],
+            [
+                'method' => 'GET|HEAD',
+                'uri' => 'api/logout',
+                'name' => 'json-api-auth.logout',
+            ],
+            [
+                'method' => 'POST',
+                'uri' => 'api/register',
+                'name' => 'json-api-auth.register',
+            ],
+            [
+                'method' => 'POST',
+                'uri' => 'api/reset-password',
+                'name' => 'json-api-auth.password.update',
+            ],
+            [
+                'method' => 'GET|HEAD',
+                'uri' => 'api/verify-email/{id}/{hash}',
+                'name' => 'json-api-auth.verification.verify',
+            ],
+        ];
+
+        $this->table($headers, $routes);
     }
 }
