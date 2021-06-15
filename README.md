@@ -3,8 +3,6 @@
 # 🔐 Authentication scaffold for Json Apis.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/arielmejiadev/json-api-auth.svg?style=flat-square)](https://packagist.org/packages/arielmejiadev/json-api-auth)
-[![Build Status](https://img.shields.io/travis/arielmejiadev/json-api-auth/master.svg?style=flat-square)](https://travis-ci.org/arielmejiadev/json-api-auth)
-[![Quality Score](https://img.shields.io/scrutinizer/g/arielmejiadev/json-api-auth.svg?style=flat-square)](https://scrutinizer-ci.com/g/arielmejiadev/json-api-auth)
 [![Total Downloads](https://img.shields.io/packagist/dt/arielmejiadev/json-api-auth.svg?style=flat-square)](https://packagist.org/packages/arielmejiadev/json-api-auth)
 
 It adds all the scaffold to get register, login, logout, forgot password, password verify and verify email account features for Apis. 
