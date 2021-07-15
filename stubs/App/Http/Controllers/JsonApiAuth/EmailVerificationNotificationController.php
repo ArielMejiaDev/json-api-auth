@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\JsonApiAuth;
 
-use App\Actions\JsonApiAuth\AuthKit;
+use App\Http\Controllers\JsonApiAuth\Actions\AuthKit;
 use App\Notifications\JsonApiAuth\VerifyEmailNotification;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class EmailVerificationNotificationController extends Controller
+class EmailVerificationNotificationController
 {
     /**
      * Resend the email verification notification.
@@ -31,6 +30,4 @@ class EmailVerificationNotificationController extends Controller
             'message' => __('json-api-auth.email_sent'),
         ], 200);
     }
-
-
 }

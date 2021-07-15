@@ -1,22 +1,13 @@
 <?php
 
-namespace App\Actions\JsonApiAuth;
+namespace App\Http\Controllers\JsonApiAuth\Actions;
 
 class AuthKit
 {
     const PASSPORT_AUTH_KIT = 'passport';
     const SANCTUM_AUTH_KIT = 'sanctum';
 
-    public static function getMiddleware()
-    {
-        if(static::isSanctum()) {
-            return 'auth:sanctum';
-        }
-
-        return 'auth:api';
-    }
-
-    public static function getGuard()
+    public static function getGuard(): string
     {
         if(static::isSanctum()) {
             return 'sanctum';
@@ -25,7 +16,7 @@ class AuthKit
         return 'api';
     }
 
-    public static function isPassport()
+    public static function isPassport(): bool
     {
         $passportVendorName = 'Laravel\Passport\Passport';
         if (class_exists($passportVendorName)) {
@@ -34,7 +25,7 @@ class AuthKit
         return false;
     }
 
-    public static function isSanctum()
+    public static function isSanctum(): bool
     {
         $sanctumVendorName = 'Laravel\Sanctum\Sanctum';
         if(class_exists($sanctumVendorName)) {

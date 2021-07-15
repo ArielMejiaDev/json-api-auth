@@ -2,32 +2,24 @@
 
 namespace App\Http\Controllers\JsonApiAuth;
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\JsonApiAuth\Revokers\RevokerFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
-use App\Models\User;
 
-class LogoutController extends Controller
+class LogoutController
 {
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): Response
     {
         (new RevokerFactory)->make()->{$this->applyRevokeStrategy()}();
 
-        return Response([
+        return response([
             'message' => __('json-api-auth.logout'),
         ], 200);
     }
 
-    /**
-     * It guess what method is going to use on logout based on the package config file
-     * @return string
-     */
-    public function applyRevokeStrategy()
+    /** It guess what method is going to use on logout based on the package config file. */
+    public function applyRevokeStrategy(): string
     {
         $methods = [
             'revoke_only_current_token',

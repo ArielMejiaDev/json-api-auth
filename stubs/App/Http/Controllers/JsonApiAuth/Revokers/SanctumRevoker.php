@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\JsonApiAuth\Revokers;
 
-
 use App\Http\Controllers\JsonApiAuth\Interfaces\Revoker;
+use App\Models\User;
 
 class SanctumRevoker implements Revoker
 {
-
-    /**
-     * @var User
-     */
-    private $user;
+    private User $user;
 
     public function __construct($user)
     {
@@ -20,7 +16,6 @@ class SanctumRevoker implements Revoker
 
     /**
      * It revokes by updating only the token in database, that is given when user do a login.
-     * @return
      */
     public function revokeOnlyCurrentToken()
     {
@@ -37,7 +32,6 @@ class SanctumRevoker implements Revoker
 
     /**
      * It deletes the current token in database, the token deleted is the one used by the user use to login.
-     * @return
      */
     public function deleteCurrentToken()
     {

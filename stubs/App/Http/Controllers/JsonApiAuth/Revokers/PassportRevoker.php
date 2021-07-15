@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\JsonApiAuth\Revokers;
 
 use App\Http\Controllers\JsonApiAuth\Interfaces\Revoker;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class PassportRevoker implements Revoker
 {
-    /**
-     * @var User
-     */
-    private $user;
+    private User $user;
 
     public function __construct($user)
     {

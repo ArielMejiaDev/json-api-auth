@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\JsonApiAuth;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\JsonApiAuth\EmailVerificationRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 
-class VerifyEmailController extends Controller
+class VerifyEmailController
 {
     /**
      * Mark the authenticated user's email address as verified.

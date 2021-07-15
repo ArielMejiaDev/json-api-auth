@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\JsonApiAuth\Revokers;
 
-use App\Actions\JsonApiAuth\AuthKit;
+use App\Http\Controllers\JsonApiAuth\Actions\AuthKit;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class RevokerFactory
 {

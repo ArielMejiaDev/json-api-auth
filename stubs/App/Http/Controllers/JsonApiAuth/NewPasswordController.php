@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers\JsonApiAuth;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Http\Requests\JsonApiAuth\NewPasswordRequest;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class NewPasswordController extends Controller
+class NewPasswordController
 {
-    /**
-     * Handle an incoming new password request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function __invoke(NewPasswordRequest $request)
+    /** Handle an incoming new password request. */
+    public function __invoke(NewPasswordRequest $request): JsonResponse
     {
-        $user = $request->getUser($request);
+        /** @var User $user */
+        $user = $request->getUser();
 
         $user->update(['password' => Hash::make($request->get('password'))]);
 
@@ -30,6 +24,4 @@ class NewPasswordController extends Controller
             'message' => __('json-api-auth.password_updated'),
         ]);
     }
-
-
 }

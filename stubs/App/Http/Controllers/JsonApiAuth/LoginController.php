@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\JsonApiAuth;
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\JsonApiAuth\Traits\HasToShowApiTokens;
 use App\Http\Requests\JsonApiAuth\LoginRequest;
-use App\Models\User;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class LoginController
 {
     use HasToShowApiTokens;
 
-    public function __invoke(LoginRequest $request)
+    public function __invoke(LoginRequest $request): JsonResponse
     {
         try {
 
@@ -20,7 +20,7 @@ class LoginController extends Controller
                 return $this->showCredentials(Auth::user());
             }
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->json([
                 'message' => $exception->getMessage()
