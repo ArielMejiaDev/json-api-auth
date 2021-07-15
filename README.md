@@ -1,4 +1,4 @@
-<p align="center"><img src="https://banners.beyondco.de/Json%20Api%20Auth.png?theme=light&packageManager=composer+require&packageName=arielmejiadev%2Fjson-api-auth&pattern=bubbles&style=style_1&description=Authentication+scaffold+for+Json+Apis&md=1&showWatermark=0&fontSize=125px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg"></p>
+<p align="center"><img src="https://banners.beyondco.de/JSON%20API%20AUTH.png?theme=light&packageManager=composer+require&packageName=ArielMejiaDev%2Fjson-api-auth&pattern=architect&style=style_1&description=Auth+scaffold+for+JSON+APIs&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg"></p>
 
 # 🔐 Authentication scaffold for Json Apis.
 
