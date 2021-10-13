@@ -4,6 +4,7 @@ namespace App\Http\Requests\JsonApiAuth;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PasswordResetLinkRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class PasswordResetLinkRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,10 +23,10 @@ class PasswordResetLinkRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'email' => 'required|email',
+            'email' => ['required', 'email', Rule::exists(User::class)],
         ];
     }
 
@@ -33,12 +34,6 @@ class PasswordResetLinkRequest extends FormRequest
     {
         $email = $this->get('email');
 
-        if(User::where('email', $email)->doesntExist()) {
-            return response()->json([
-                'message' => 'User does not exists',
-            ], 404);
-        }
-
-        return User::whereEmail($email)->first();
+        return User::query()->where('email', $email)->first();
     }
 }

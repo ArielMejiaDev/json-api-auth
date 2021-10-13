@@ -13,7 +13,6 @@ class PasswordResetLinkController
 {
     public function __invoke(PasswordResetLinkRequest $request): JsonResponse
     {
-        /** @var User $user */
         $user = $request->getUser();
         $token = Str::random(60);
 
