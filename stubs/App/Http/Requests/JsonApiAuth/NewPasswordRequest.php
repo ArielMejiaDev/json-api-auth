@@ -34,7 +34,7 @@ class NewPasswordRequest extends FormRequest
         ];
     }
 
-    public function getUser()
+    public function getUserByToken()
     {
 
         $token = $this->get('token');
