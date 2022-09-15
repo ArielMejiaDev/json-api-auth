@@ -14,7 +14,7 @@ class NewPasswordController
     public function __invoke(NewPasswordRequest $request): JsonResponse
     {
         /** @var User $user */
-        $user = $request->getUser();
+        $user = $request->getUserByToken();
 
         $user->update(['password' => Hash::make($request->get('password'))]);
 

@@ -30,7 +30,7 @@ class PasswordResetLinkRequest extends FormRequest
         ];
     }
 
-    public function getUser()
+    public function getUserByEmail()
     {
         $email = $this->get('email');
 
