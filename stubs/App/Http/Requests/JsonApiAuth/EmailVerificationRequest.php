@@ -70,7 +70,7 @@ class EmailVerificationRequest extends FormRequest
 
     public function validateUser()
     {
-        auth()->loginUsingId(User::findOrFail($this->route('id'))->id);
+        auth()->login(User::findOrFail($this->route('id')));
 
         try {
             if ($this->route('id') != $this->user()->getKey()) {
